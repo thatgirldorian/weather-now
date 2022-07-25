@@ -10,22 +10,33 @@ class App extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { latitude: null}
+        this.state = { latitude: null, errorMessage: ''}
 
         //call the Geolocation API
         window.navigator.geolocation.getCurrentPosition(
-            //when the API call is successful
+            //Error handling for the API call
             position => {
-                this.setState({ latitude: position.coords.latitude })
+                this.setState({ latitude: position.coords.latitude})
+                
             },
-            //when it doesn't quite work out
-            err => {}
+            err => {
+                this.setState({ errorMessage: err.message })
+            }
         )
     }
 
     render() {
-         //render our component and reference state
-        return <div>Latitude: {this.state.latitude}</div>
+         //render our component, reference state & conditionally show error message
+        if (this.state.errorMessage && !this.state.latitude) {
+            return <div>Error: {this.state.errorMessage}</div>
+        } 
+        
+        if (!this.state.errorMessage && this.setState.latitude) {
+            return <div>Latitude: {this.setState.latitude}</div>
+        } 
+        
+        return <div>Loading..</div>
+        
     }
 }
 
