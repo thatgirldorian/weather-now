@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import SeasonsDisplay from "./SeasonsDisplay"
+import './App.css'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const App = () => {
+    //call the Geolocation API
+    window.navigator.geolocation.getCurrentPosition(
+        //when the API call is successful
+        position => console.log(position),
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+        //when it doesn't quite work out
+        err => console.log(err)
+    )
+
+    return (
+        // <div>Our new weather app</div>
+        <SeasonsDisplay />
+
+    )
+}
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<App />)
