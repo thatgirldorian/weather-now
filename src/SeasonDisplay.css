@@ -34,3 +34,7 @@
 .summer {
     background-color: orange;
 }
+
+.ui.segment>.ui.dimmer {
+    height: 100vh;
+}

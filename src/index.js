@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import SeasonDisplay from "./SeasonDisplay"
+import LoaderSpinner from "./LoaderSpinner"
 
 
 //create a class component & initialize state
@@ -29,7 +30,7 @@ class App extends React.Component {
                 />
             }
         
-            return <div>Loading!</div>;
+            return <LoaderSpinner />;
     }
 }
 
