@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import SeasonsDisplay from "./SeasonsDisplay"
+import SeasonDisplay from "./SeasonDisplay"
 import './App.css'
 
 
@@ -25,7 +25,9 @@ class App extends React.Component {
             }
         
             if (!this.state.errorMessage && this.state.latitude) {
-                return <div>Latitude: {this.state.latitude}</div>;
+                return <SeasonDisplay
+                    latitude= {this.state.latitude}
+                />
             }
         
             return <div>Loading!</div>;
