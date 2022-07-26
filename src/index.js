@@ -4,39 +4,31 @@ import SeasonsDisplay from "./SeasonsDisplay"
 import './App.css'
 
 
-//create a class component
+//create a class component & initialize state
 class App extends React.Component {
-    //initialize state
-    constructor(props) {
-        super(props)
+    state = { latitude: null, errorMessage: ''}
 
-        this.state = { latitude: null, errorMessage: ''}
-
-        //call the Geolocation API
+    //use the componentDidMount lifecycle method & call the Geolocation API
+    componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
             //Error handling for the API call
-            position => {
-                this.setState({ latitude: position.coords.latitude})
-                
-            },
-            err => {
-                this.setState({ errorMessage: err.message })
-            }
+            position => this.setState({ latitude: position.coords.latitude }) ,
+            err => this.setState({ errorMessage: err.message })
+            
         )
     }
+    
 
     render() {
-         //render our component, reference state & conditionally show error message
-        if (this.state.errorMessage && !this.state.latitude) {
-            return <div>Error: {this.state.errorMessage}</div>
-        } 
+            if (this.state.errorMessage && !this.state.latitude) {
+                return <div>Error: {this.state.errorMessage}</div>;
+            }
         
-        if (!this.state.errorMessage && this.setState.latitude) {
-            return <div>Latitude: {this.setState.latitude}</div>
-        } 
+            if (!this.state.errorMessage && this.state.latitude) {
+                return <div>Latitude: {this.state.latitude}</div>;
+            }
         
-        return <div>Loading..</div>
-        
+            return <div>Loading!</div>;
     }
 }
 
