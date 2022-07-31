@@ -1,6 +1,6 @@
 # weather-now
 
-This is a small application that tells you what the weather's like, depending on which hemisphere you live in. It used the Geolocator API to figure out your location. I made it with React JS and Semantic UI. 
+This is a small application that tells you what the weather's like, depending on which hemisphere you live in. It uses the Geolocator API to figure out your location and renders a message on the UI. I made it with React JS and Semantic UI. 
 
 
 <h3>Technology used:</h3>
